@@ -7,7 +7,7 @@ using ESO.Model;
 
 namespace ESO.ViewModel
 {
-    class IbexVM: Utilities.ViewModelBase
+    class IbexVM : Utilities.ViewModelBase
     {
         private readonly PageModel _pageModel;
 

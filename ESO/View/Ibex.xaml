@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="ESO.View.Ibex"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:ESO.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="434.04"
+             d:DesignWidth="650"
+             Style="{StaticResource Page_Style}">
+
+    <UserControl.DataContext>
+        <vm:IbexVM />
+    </UserControl.DataContext>
+
+    <Grid>
+
+    </Grid>
+</UserControl>
