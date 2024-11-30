@@ -3,16 +3,87 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ESO"
+        xmlns:vm="clr-namespace:ESO.ViewModel"
+        xmlns:Menu="clr-namespace:ESO.Utilities"
         mc:Ignorable="d"
-        Title="ПРОГНОЗНИ ДАННИ НА ЕЛЕКТРОЕНЕРГИЕН СИСТЕМЕН ОПЕРАТОР"
+        Title="ДАННИ ЗА ЕЛЕКТРОЕНЕРГИЕН ПАЗАР"
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanResizeWithGrip"
         MinHeight="450"
         MinWidth="800"
         Height="450"
         Width="800">
-    <Grid>
+    
+    <Window.DataContext>
+        <vm:NavigationVM />
+    </Window.DataContext>
 
+    <Grid>
+        <!--// Window Border //-->
+        <Border Background="#212529" />
+
+        <Grid>
+            <!--// Base Grid //-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150" />
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!--// Navigation Panel //-->
+            <Grid>
+                <Border Background="#272B2F"/>
+                <StackPanel Height="300" VerticalAlignment="Top" Margin="0,20,0,0">
+
+                    <!--// Dashboard //-->
+                    <Menu:Btn Style="{StaticResource BtnStyle}" Command="{Binding DashboardCommand}" IsChecked="True">
+                        <Grid>
+                            <Path Style="{StaticResource Path_Style}" Data="M12 3C12.5523 3 13 3.44771 13 4L13 10C13 10.5523 12.5523 11 12 11L4 11C3.44772 11 3 10.5523 3 10L3 4C3 3.44772 3.44772 3 4 3L12 3ZM20 3C20.5523 3 21 3.44771 21 4L21 10C21 10.5523 20.5523 11 20 11L16 11C15.4477 11 15 10.5523 15 10L15 4C15 3.44771 15.4477 3 16 3L20 3ZM20 13C20.5523 13 21 13.4477 21 14L21 20C21 20.5523 20.5523 21 20 21L12 21C11.4477 21 11 20.5523 11 20L11 14C11 13.4477 11.4477 13 12 13L20 13ZM3 14C3 13.4477 3.44772 13 4 13L8 13C8.55229 13 9 13.4477 9 14L9 20C9 20.5523 8.55229 21 8 21L4 21C3.44772 21 3 20.5523 3 20L3 14Z" />
+                            <TextBlock Text="Dashboard" Style="{StaticResource Text_Style}"/>
+                        </Grid>
+                    </Menu:Btn>
+
+                    <!--// Ibex //-->
+                    <Menu:Btn Style="{StaticResource BtnStyle}" Command="{Binding IbexCommand}" >
+                        <Grid>
+                            <Path Style="{StaticResource Path_Style}" Data="M12.89 11.1c-1.78-.59-2.64-.96-2.64-1.9 0-1.02 1.11-1.39 1.81-1.39 1.31 0 1.79.99 1.9 1.34l1.58-.67c-.15-.45-.82-1.92-2.54-2.24V5h-2v1.26c-2.48.56-2.49 2.86-2.49 2.96 0 2.27 2.25 2.91 3.35 3.31 1.58.56 2.28 1.07 2.28 2.03 0 1.13-1.05 1.61-1.98 1.61-1.82 0-2.34-1.87-2.4-2.09l-1.66.67c.63 2.19 2.28 2.78 2.9 2.96V19h2v-1.24c.4-.09 2.9-.59 2.9-3.22 0-1.39-.61-2.61-3.01-3.44zM3 21H1v-6h6v2H4.52c1.61 2.41 4.36 4 7.48 4a9 9 0 0 0 9-9h2c0 6.08-4.92 11-11 11-3.72 0-7.01-1.85-9-4.67V21zm-2-9C1 5.92 5.92 1 12 1c3.72 0 7.01 1.85 9 4.67V3h2v6h-6V7h2.48C17.87 4.59 15.12 3 12 3a9 9 0 0 0-9 9H1z" />
+                            <TextBlock Text="Ibex" Style="{StaticResource Text_Style}" />
+                        </Grid>
+                    </Menu:Btn>
+
+                    <!-- Other 1 -->
+                    <Menu:Btn Style="{StaticResource BtnStyle}" Command="{Binding IbexCommand}" >
+                        <Grid>
+                            <Path Style="{StaticResource Path_Style}" Data="M1023.31 473.296c-1.36-11.312-5.614-21.713-12.095-30.465h.16l-.88-.88c-3.28-4.32-7.12-8.128-11.408-11.504L581.807 27.04c-36.223-36.223-99.504-36.288-135.776 0L28.815 427.295c-9.024 8.4-28.88 31.09-28.88 53.345v479.52c0 35.184 28.816 64 64 64h896c35.183 0 64-28.816 64-64V481.904c.223-2.88-.065-5.76-.625-8.607zM269.794 726.335L63.938 915.902V544.718zm65.775 26.384c2.288-1.52 4.465-3.248 6.37-5.408.367-.416.623-.912.96-1.344l141.167-130c7.248-5.84 15.84-8.912 24.88-8.912 9.184 0 18.367 3.216 24.527 8l383.6 345.104H110.337zm421.889-22.161l202.48-179.696v361.84zm-653.68-287.729L491.279 72.285c6.064-6.032 14.097-9.376 22.625-9.376 8.56 0 16.592 3.344 22.656 9.376l361.376 344.352h-.975l54.896 55.792-242.304 215.04-135.248-121.664c-37.68-29.536-91.775-30.816-131.68 1.376L317.121 682.765 75.33 469.421l26.992-26.592h1.456z" />
+                            <TextBlock Text="Other 1" Style="{StaticResource Text_Style}" />
+                        </Grid>
+                    </Menu:Btn>
+
+                    <!-- Other 2 -->
+                    <Menu:Btn Style="{StaticResource BtnStyle}" Command="{Binding IbexCommand}" >
+                        <Grid>
+                            <Path Style="{StaticResource Path_Style}" Data="M1018.72 295.472L878.848 28.03C870.688 12.43 849.584-.322 832-.322H510.064c-.351-.015-.703-.11-1.054-.127-.288 0-.56.113-.849.128h-316.16c-17.6 0-38.752 12.72-47.024 28.256L5.473 290.223c-8.289 15.536-6.624 39.937 3.631 54.257l480.016 669.152c5.153 7.184 12 10.815 18.832 10.815 6.785 0 13.584-3.536 18.768-10.591L1014.624 349.6c10.384-14.193 12.256-38.544 4.096-54.128zm-76.353-7.843H770.911l68.656-196.608zM575.343 63.677h205.968l-63.888 182.928zm92.895 223.952H370.591L511.263 85.533zm-354.351-30.544L249.71 63.677h198.816zm366.863 94.544L508.718 844.173 345.262 351.629H680.75zM436.926 831.085L92.99 351.629h184.832zm311.616-479.456H933.71l-352.976 480.56zM188.478 82.413l68.096 205.216H79.326z" />
+                            <TextBlock Text="Other 2" Style="{StaticResource Text_Style}" />
+                        </Grid>
+                    </Menu:Btn>
+
+                    <!-- Settings -->
+                    <Menu:Btn Style="{StaticResource BtnStyle}" Command="{Binding IbexCommand}" >
+                        <Grid>
+                            <Path Style="{StaticResource Path_Style}" Data="m470.39 300-.47-.38-31.56-24.75a16.11 16.11 0 0 1-6.1-13.33v-11.56a16 16 0 0 1 6.11-13.22L469.92 212l.47-.38a26.68 26.68 0 0 0 5.9-34.06l-42.71-73.9a1.59 1.59 0 0 1-.13-.22A26.86 26.86 0 0 0 401 92.14l-.35.13-37.1 14.93a15.94 15.94 0 0 1-14.47-1.29q-4.92-3.1-10-5.86a15.94 15.94 0 0 1-8.19-11.82l-5.59-39.59-.12-.72A27.22 27.22 0 0 0 298.76 26h-85.52a26.92 26.92 0 0 0-26.45 22.39l-.09.56-5.57 39.67a16 16 0 0 1-8.13 11.82 175.21 175.21 0 0 0-10 5.82 15.92 15.92 0 0 1-14.43 1.27l-37.13-15-.35-.14a26.87 26.87 0 0 0-32.48 11.34l-.13.22-42.77 73.95a26.71 26.71 0 0 0 5.9 34.1l.47.38 31.56 24.75a16.11 16.11 0 0 1 6.1 13.33v11.56a16 16 0 0 1-6.11 13.22L42.08 300l-.47.38a26.68 26.68 0 0 0-5.9 34.06l42.71 73.9a1.59 1.59 0 0 1 .13.22 26.86 26.86 0 0 0 32.45 11.3l.35-.13 37.07-14.93a15.94 15.94 0 0 1 14.47 1.29q4.92 3.11 10 5.86a15.94 15.94 0 0 1 8.19 11.82l5.56 39.59.12.72A27.22 27.22 0 0 0 213.24 486h85.52a26.92 26.92 0 0 0 26.45-22.39l.09-.56 5.57-39.67a16 16 0 0 1 8.18-11.82c3.42-1.84 6.76-3.79 10-5.82a15.92 15.92 0 0 1 14.43-1.27l37.13 14.95.35.14a26.85 26.85 0 0 0 32.48-11.34 2.53 2.53 0 0 1 .13-.22l42.71-73.89a26.7 26.7 0 0 0-5.89-34.11zm-134.48-40.24a80 80 0 1 1-83.66-83.67 80.21 80.21 0 0 1 83.66 83.67z" />
+                            <TextBlock Text="Settings" Style="{StaticResource Text_Style}" />
+                        </Grid>
+                    </Menu:Btn>
+                </StackPanel>
+
+                <!-- Footer -->
+                <StackPanel VerticalAlignment="Bottom" Margin="0,0,0,8">
+                    <TextBlock Text="D E S I G N  B Y  E R H A N" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF00A0E3" FontFamily="Rubik" FontSize="11" FontStyle="Italic" />
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Column="1">
+                <ContentControl x:Name="Pages" Content="{Binding CurrentView}" />
+            </Grid>
+        </Grid>
     </Grid>
+    
 </Window>
